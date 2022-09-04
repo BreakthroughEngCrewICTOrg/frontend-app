@@ -1374,7 +1374,7 @@ select {
   background-color: rgba(51, 65, 85, var(--tw-bg-opacity));
 }
 
-.bg-blueGray-800 {
+.bg-brand-purple {
   --tw-bg-opacity: 1;
   background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
 }
@@ -3290,7 +3290,7 @@ select {
   color: rgba(51, 65, 85, var(--tw-text-opacity));
 }
 
-.text-blueGray-800 {
+.text-brand-purple {
   --tw-text-opacity: 1;
   color: rgba(30, 41, 59, var(--tw-text-opacity));
 }
@@ -3315,7 +3315,7 @@ select {
   color: rgba(51, 65, 85, var(--tw-text-opacity));
 }
 
-.hover\:text-blueGray-800:hover {
+.hover\:text-brand-purple:hover {
   --tw-text-opacity: 1;
   color: rgba(30, 41, 59, var(--tw-text-opacity));
 }
