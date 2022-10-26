@@ -1,6 +1,9 @@
 import React from "react";
 import Link, { Router } from "next/link";
+import axios from "axios";
 import { useRouter } from "next/router";
+import { useRef } from "react";
+import useSWR from "swr";
 
 // layout for page
 
@@ -8,10 +11,38 @@ import Auth from "layouts/Auth.js";
 
 export default function Login() {
   const router = useRouter();
+  const userPhoneNo = useRef();
+  const userPassword = useRef();
+
+  console.log(userPassword, "ref");
 
   const handleUserLogin = async (e) => {
-    router.push("/admin/dashboard");
+    e.preventDefault();
+    const phoneNo = userPhoneNo.current.value;
+    const password = userPassword.current.value;
+    const user = { phoneNo, password };
+    console.log(user, "user");
+    const response = await axios.post(
+      "http://localhost:3500/api/auth/login",
+      user
+    );
+    console.log(response, "response");
+    if (response.status === 201) {
+      router.push("/user/dashboard");
+      localStorage.setItem('token', response.data.token);
+    }
   };
+  // const { data, error } = useSWR(
+  //   "http://localhost:3500/api/auth/login",
+  //   async (url) => {
+  //     const response = await axios.post(url, user);
+  //     return response.data;
+  //   }
+  // );
+  // console.log(data, "data");
+  // console.log(error, "error");
+
+  // router.push("/user/dashboard");
 
   return (
     <>
@@ -34,6 +65,7 @@ export default function Login() {
                       type="number"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Phone number"
+                      ref={userPhoneNo}
                     />
                   </div>
 
@@ -48,6 +80,7 @@ export default function Login() {
                       type="password"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Password"
+                      ref={userPassword}
                     />
                   </div>
                   <div>

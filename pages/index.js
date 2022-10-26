@@ -4,8 +4,17 @@ import Link from "next/link";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
+import { useSelector } from "react-redux";
+import { useRouter } from 'next/router'
 
 export default function Index() {
+
+
+  const router = useRouter()
+
+
+
+
   return (
     <>
       <IndexNavbar fixed />

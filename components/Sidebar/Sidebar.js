@@ -26,7 +26,7 @@ export default function Sidebar() {
               href="#pablo"
               className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
             >
-              Notus NextJS
+              BEC 
             </a>
           </Link>
           {/* User */}
@@ -114,7 +114,7 @@ export default function Sidebar() {
               </li>
 
               <li className="items-center">
-                <Link href="/admin/profile">
+                <Link href="/user/profile">
                   <a
                     href="#pablo"
                     className={
@@ -127,7 +127,7 @@ export default function Sidebar() {
                     <i
                       className={
                         "fas fa-tools mr-2 text-sm " +
-                        (router.pathname.indexOf("/admin/profile") !== -1
+                        (router.pathname.indexOf("/user/profile") !== -1
                           ? "opacity-75"
                           : "text-blueGray-300")
                       }
