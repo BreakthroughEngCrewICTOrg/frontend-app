@@ -5,7 +5,8 @@ import Head from "next/head";
 import Router from "next/router";
 import { Provider } from "react-redux";
 import store from "store/store";
-
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+// import AlertTemplate from 'react-alert-template-basic'
 
 import PageChange from "components/PageChange/PageChange.js";
 
@@ -28,6 +29,15 @@ Router.events.on("routeChangeError", () => {
   ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
   document.body.classList.remove("body-page-transition");
 });
+
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.BOTTOM_CENTER,
+  timeout: 5000,
+  offset: '30px',
+  // you can also just use 'scale'
+  transition: transitions.SCALE
+}
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -52,6 +62,7 @@ export default class MyApp extends App {
 
     const Layout = Component.layout || (({ children }) => <>{children}</>);
 
+
     return (
       <React.Fragment>
         <Head>
@@ -63,10 +74,12 @@ export default class MyApp extends App {
         
         </Head>
         <Provider store={store}>
+          {/* <AlertProvider template={AlertTemplate} {...options}> */}
        
           <Layout>
             <Component {...pageProps} />
           </Layout>
+          {/* </AlertProvider>   */}
        
         </Provider>
       </React.Fragment>

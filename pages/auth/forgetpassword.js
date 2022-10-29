@@ -27,17 +27,14 @@ export default function ForgetPassword() {
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                       htmlFor="grid-password"
                     >
-                     Email
+                      Phone number
                     </label>
                     <input
                       type="number"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      placeholder="email"
+                      placeholder="phone number"
                     />
                   </div>
-
-                
-               
 
                   <div className="text-center mt-6">
                     <button
@@ -45,7 +42,7 @@ export default function ForgetPassword() {
                       type="button"
                       onClick={handleUserLogin}
                     >
-                      Reset Password
+                      Change Password
                     </button>
                   </div>
                 </form>
@@ -58,16 +55,16 @@ export default function ForgetPassword() {
                   onClick={(e) => e.preventDefault()}
                   className="text-blueGray-200"
                 >
-                  <small>Forgot password?</small>
+                  {/* <small>Forgot password?</small> */}
                 </a>
               </div>
-              <div className="w-1/2 text-right">
+              {/* <div className="w-1/2 text-right">
                 <Link href="/auth/register">
                   <a href="#pablo" className="text-blueGray-200">
                     <small>Create new account</small>
                   </a>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

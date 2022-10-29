@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 
 // layout for page
 
-import Admin from "layouts/Admin.js";
+import User from "layouts/User.js";
 
 export default function Profile() {
   let userToken;
@@ -19,43 +19,41 @@ export default function Profile() {
     // Perform localStorage action
     userToken = localStorage.getItem("token");
   }
-  console.log(userToken)
+  console.log(userToken);
 
   const fetcher = (url, token) =>
     axios
       .get(url, { headers: { Authorization: "Bearer " + token } })
       .then((res) => res.data);
 
-  const { data, error , loading } = useSWR(
-    ["http://localhost:3500/bio-data/getby/userid" ,userToken],
+  const { data, error, loading } = useSWR(
+    ["http://localhost:3500/bio-data/getby/userid", userToken],
     fetcher
   );
 
-  
-const dispatch = useDispatch();
-// dispatch()
+  const dispatch = useDispatch();
+  // dispatch()
 
-
-if (!data) {
-  return <div>Loading...</div>;
-}
-
-
+  if (!data) {
+    return <div>Loading...</div>;
+  }
 
   console.log(data, "userdata");
- 
+
   return (
     <>
-      <div className="flex flex-wrap">
-        <div className="w-full lg:w-8/12 px-4">
-          <CardSettings data={data?.data} />
+      <User>
+        <div className="flex flex-wrap">
+          <div className="w-full lg:w-8/12 px-4">
+            <CardSettings data={data?.data} />
+          </div>
+          <div className="w-full lg:w-4/12 px-4">
+            <CardProfile data={data?.data} />
+          </div>
         </div>
-        <div className="w-full lg:w-4/12 px-4">
-          <CardProfile data={data?.data}/>
-        </div>
-      </div>
+      </User>
     </>
   );
 }
 
-Profile.layout = Admin;
+// Profile.layout = Admin;
