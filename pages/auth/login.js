@@ -45,7 +45,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3500/api/auth/login",
+        "https://becapp-backend.onrender.com/api/auth/login",
         user
       );
       console.log(response, "response");
@@ -54,10 +54,13 @@ export default function Login() {
           console.log(`${response.data.errorMessage}`);
 
           window.alert(`${response.data.errorMessage}`);
-          // window.location.href = "/auth/forgetpassword";
+          window.location.href = "/auth/forgetpassword";
         } else {
+          localStorage.setItem("token", response.data.data.token);
+
+          // console.log(response.data.data.token)
+
           router.push("/user/profile");
-          localStorage.setItem("token", response.data.token);
         }
       }
     } catch (err) {
@@ -76,11 +79,9 @@ export default function Login() {
 
   // router.push("/user/dashboard");
 
-  const onSubmit = (data,e) => {
+  const onSubmit = (data, e) => {
     console.log(data, "data");
-
-    handleUserLogin(e,data);
-
+    handleUserLogin(e, data);
   };
 
   return (
@@ -151,7 +152,7 @@ export default function Login() {
                     />
 
                     {errors.password && (
-                      <p className="text-red-500 text- p-3 italic">
+                      <p className="text-red-500 text-xs text- p-3 italic">
                         {errors.password.message}
                       </p>
                     )}
@@ -176,6 +177,9 @@ export default function Login() {
                       // onClick={handleUserLogin}
                     >
                       Sign In
+
+                      
+                    
                     </button>
                   </div>
                 </form>

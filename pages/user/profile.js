@@ -27,7 +27,7 @@ export default function Profile() {
       .then((res) => res.data);
 
   const { data, error, loading } = useSWR(
-    ["http://localhost:3500/bio-data/getby/userid", userToken],
+    ["https://becapp-backend.onrender.com/bio-data/getby/userid", userToken],
     fetcher
   );
 

@@ -7,6 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.3",
+    "@hookform/resolvers": "^2.9.10",
     "@popperjs/core": "2.9.1",
     "@reduxjs/toolkit": "^1.8.6",
     "@tailwindcss/forms": "0.2.1",
@@ -21,7 +22,8 @@
     "react-hook-form": "^7.38.0",
     "react-redux": "^8.0.4",
     "react-scripts": "4.0.3",
-    "swr": "^1.3.0"
+    "swr": "^1.3.0",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "next start",
